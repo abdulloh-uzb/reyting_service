@@ -22,11 +22,11 @@ func NewReytingService(db *sqlx.DB, log l.Logger) *ReytingService {
 }
 
 func (r *ReytingService) CreateRanking(ctx context.Context, req *pbr.Ranking) (*pbr.Empty, error) {
-	_, err := r.storage.Reyting().CreateReyting(req)
+	a, err := r.storage.Reyting().CreateReyting(req)
 	if err != nil {
 		return &pbr.Empty{}, err
 	}
-	return &pbr.Empty{}, nil
+	return a, nil
 }
 
 func (r *ReytingService) GetRankings(ctx context.Context, req *pbr.Id) (*pbr.Rankings, error) {

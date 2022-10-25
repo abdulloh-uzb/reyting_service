@@ -15,9 +15,10 @@ func NewReytingRepo(db *sqlx.DB) *reytingRepo {
 }
 
 func (r *reytingRepo) CreateReyting(req *pbr.Ranking) (*pbr.Empty, error) {
-	err := r.db.QueryRow(`insert into rankings(name, description, ranking, post_id, customer_id) values($1,$2,$3,$4,$5)`,
-		req.Name, req.Description, req.Ranking, req.PostId, req.CustomerId)
 
+	err := r.db.QueryRow(`insert into rankings(name, description, ranking, post_id, customer_id) values($1,$2,$3,$4,$5) select * from WHERE
+	ranking BETWEEN 0 AND 5`,
+		req.Name, req.Description, req.Ranking, req.PostId, req.CustomerId)
 	if err.Err() != nil {
 		return &pbr.Empty{}, err.Err()
 	}
