@@ -1,7 +1,7 @@
 package postgres
 
 import (
-	pbr "reyting-service/genproto/reyting"
+	pbr "exam/reyting_service/genproto/reyting"
 
 	"github.com/jmoiron/sqlx"
 )

@@ -2,9 +2,9 @@ package service
 
 import (
 	"context"
-	pbr "reyting-service/genproto/reyting"
-	l "reyting-service/pkg/logger"
-	"reyting-service/storage"
+	pbr "exam/reyting_service/genproto/reyting"
+	l "exam/reyting_service/pkg/logger"
+	"exam/reyting_service/storage"
 
 	"github.com/jmoiron/sqlx"
 )

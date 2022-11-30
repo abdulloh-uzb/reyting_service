@@ -1,7 +1,7 @@
 package repo
 
 import (
-	pbr "reyting-service/genproto/reyting"
+	pbr "exam/reyting_service/genproto/reyting"
 )
 
 type ReytingStorageI interface {
