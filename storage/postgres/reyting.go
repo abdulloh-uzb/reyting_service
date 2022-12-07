@@ -1,7 +1,8 @@
 package postgres
 
 import (
-	pbr "exam/reyting_service/genproto/reyting"
+	pbr "reyting_service/genproto/reyting"
+	"time"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -16,8 +17,7 @@ func NewReytingRepo(db *sqlx.DB) *reytingRepo {
 
 func (r *reytingRepo) CreateReyting(req *pbr.Ranking) (*pbr.Empty, error) {
 
-	err := r.db.QueryRow(`insert into rankings(name, description, ranking, post_id, customer_id) values($1,$2,$3,$4,$5) select * from WHERE
-	ranking BETWEEN 0 AND 5`,
+	err := r.db.QueryRow(`insert into rankings(name, description, ranking, post_id, customer_id) values($1,$2,$3,$4,$5)`,
 		req.Name, req.Description, req.Ranking, req.PostId, req.CustomerId)
 	if err.Err() != nil {
 		return &pbr.Empty{}, err.Err()
@@ -62,4 +62,22 @@ func (r *reytingRepo) GetRankingsByCustomerId(id int) (*pbr.Rankings, error) {
 	}
 
 	return rankings, nil
+}
+
+func (r *reytingRepo) DeleteRankingByPostId(id int) (*pbr.Empty, error) {
+
+	_, err := r.db.Exec(`update rankings set deleted_at = $1 where post_id=$2 and deleted_at is null`, time.Now(), id)
+	if err != nil {
+		return &pbr.Empty{}, err
+	}
+	return &pbr.Empty{}, nil
+}
+
+func (r *reytingRepo) DeleteRankingByCustomerId(id int) (*pbr.Empty, error) {
+
+	_, err := r.db.Exec(`update posts set deleted_at = $1 where customer_id=$2 and deleted_at is null`, time.Now(), id)
+	if err != nil {
+		return &pbr.Empty{}, err
+	}
+	return &pbr.Empty{}, nil
 }

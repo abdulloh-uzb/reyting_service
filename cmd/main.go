@@ -1,12 +1,12 @@
 package main
 
 import (
-	"exam/reyting_service/config"
-	pbr "exam/reyting_service/genproto/reyting"
-	"exam/reyting_service/pkg/db"
-	"exam/reyting_service/pkg/logger"
-	"exam/reyting_service/service"
 	"net"
+	"reyting_service/config"
+	pbr "reyting_service/genproto/reyting"
+	"reyting_service/pkg/db"
+	"reyting_service/pkg/logger"
+	"reyting_service/service"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"

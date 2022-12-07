@@ -1,8 +1,8 @@
 package storage
 
 import (
-	"exam/reyting_service/storage/postgres"
-	"exam/reyting_service/storage/repo"
+	"reyting_service/storage/postgres"
+	"reyting_service/storage/repo"
 
 	"github.com/jmoiron/sqlx"
 )

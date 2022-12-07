@@ -1,8 +1,8 @@
 package db
 
 import (
-	"exam/reyting_service/config"
 	"fmt"
+	"reyting_service/config"
 
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
